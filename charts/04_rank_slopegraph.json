@@ -1,0 +1,118 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Largest changes in municipal rankings after adjusting parkland area for resident population.",
+  "width": "container",
+  "height": 480,
+  "background": "transparent",
+  "data": {
+    "url": "data/processed/parkland_rank_comparison.csv"
+  },
+  "transform": [
+    {
+      "pivot": "measure",
+      "value": "rank",
+      "groupby": [
+        "lga_name"
+      ]
+    },
+    {
+      "calculate": "datum[\"Total parkland\"] - datum[\"Per 1,000 residents\"]",
+      "as": "rank_change"
+    },
+    {
+      "calculate": "abs(datum.rank_change)",
+      "as": "abs_change"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "order_num"
+        }
+      ],
+      "sort": [
+        {
+          "field": "abs_change",
+          "order": "descending"
+        },
+        {
+          "field": "lga_name",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.order_num <= 16"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 2
+  },
+  "encoding": {
+    "y": {
+      "field": "lga_name",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "rank_change",
+        "order": "descending"
+      },
+      "axis": {
+        "labelLimit": 165,
+        "labelFontSize": 12
+      }
+    },
+    "x": {
+      "field": "rank_change",
+      "type": "quantitative",
+      "title": "Change in rank after accounting for population (positions)",
+      "scale": {
+        "domainMid": 0
+      },
+      "axis": {
+        "grid": true,
+        "tickMinStep": 2
+      }
+    },
+    "color": {
+      "condition": {
+        "test": "datum.rank_change >= 0",
+        "value": "#2e7855"
+      },
+      "value": "#c98662"
+    },
+    "tooltip": [
+      {
+        "field": "lga_name",
+        "title": "Municipality"
+      },
+      {
+        "field": "Total parkland",
+        "title": "Rank by total parkland",
+        "format": ".0f"
+      },
+      {
+        "field": "Per 1,000 residents",
+        "title": "Rank per 1,000 residents",
+        "format": ".0f"
+      },
+      {
+        "field": "rank_change",
+        "title": "Ranking places gained (+) / lost (-)",
+        "format": "+.0f"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#415449",
+      "titleColor": "#415449",
+      "gridColor": "#e2e9e1"
+    }
+  }
+}

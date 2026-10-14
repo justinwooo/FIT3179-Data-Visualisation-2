@@ -1,0 +1,117 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 560,
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/processed/melbourne_lga_boundaries_final.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f3f1e9",
+        "stroke": "#b8c5b9",
+        "strokeWidth": 1.1
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.lga_name === 'Melbourne'"
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/processed/melbourne_streets.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "#c6c9c4",
+        "strokeWidth": 0.65
+      }
+    },
+    {
+      "data": {
+        "url": "data/processed/melbourne_streets.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.road_class === 'major'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "#a9b0a8",
+        "strokeWidth": 1.5
+      }
+    },
+    {
+      "data": {
+        "url": "data/processed/playground_points.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#cb7a45",
+        "opacity": 0.9,
+        "size": 145,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal",
+            "title": "Playground"
+          },
+          {
+            "field": "location_d",
+            "type": "nominal",
+            "title": "Location"
+          },
+          {
+            "field": "features",
+            "type": "nominal",
+            "title": "Features"
+          }
+        ]
+      }
+    }
+  ]
+}

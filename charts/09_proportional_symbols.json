@@ -1,0 +1,107 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 530,
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/processed/melbourne_lga_boundaries_final.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f3f1e9",
+        "stroke": "#b8c5b9",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
+        "url": "data/processed/lga_centroids.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.72,
+        "stroke": "#fff",
+        "strokeWidth": 0.7
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "everyday_parkland_ha",
+          "type": "quantitative",
+          "scale": {
+            "range": [
+              18,
+              680
+            ]
+          },
+          "title": "Everyday parkland (ha)",
+          "legend": {
+            "orient": "bottom",
+            "title": "Total everyday parkland (ha)",
+            "symbolCount": 3,
+            "direction": "horizontal"
+          }
+        },
+        "color": {
+          "field": "walkable_land_pct",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "tealblues"
+          },
+          "title": "Walkable land (%)",
+          "legend": {
+            "orient": "bottom",
+            "title": "Land within 400m catchment (%)",
+            "gradientLength": 180
+          }
+        },
+        "tooltip": [
+          {
+            "field": "lga_name",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {
+            "field": "everyday_parkland_ha",
+            "type": "quantitative",
+            "title": "Parkland ha",
+            "format": ",.1f"
+          },
+          {
+            "field": "walkable_land_pct",
+            "type": "quantitative",
+            "title": "Catchment (%)",
+            "format": ",.1f"
+          }
+        ]
+      }
+    }
+  ]
+}

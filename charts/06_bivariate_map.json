@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 405,
+  "data": {
+    "url": "data/processed/lga_bivariate.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "projection": {
+    "type": "mercator"
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.8
+  },
+  "encoding": {
+    "color": {
+      "field": "properties.bivar_label",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Low density / low parkland",
+          "Low density / medium parkland",
+          "Low density / high parkland",
+          "Medium density / low parkland",
+          "Medium density / medium parkland",
+          "Medium density / high parkland",
+          "High density / low parkland",
+          "High density / medium parkland",
+          "High density / high parkland"
+        ],
+        "range": [
+          "#e8e8e8",
+          "#b5c0da",
+          "#6c83b5",
+          "#b8d6be",
+          "#93b7b6",
+          "#5e8da1",
+          "#73a77b",
+          "#588e80",
+          "#2e646c"
+        ]
+      },
+      "title": "Density / everyday parkland",
+      "legend": {
+        "orient": "bottom",
+        "columns": 3,
+        "labelLimit": 170
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.lga_name",
+        "type": "nominal",
+        "title": "LGA"
+      },
+      {
+        "field": "properties.population_density_km2",
+        "type": "quantitative",
+        "title": "Residents/km\u00b2",
+        "format": ",.1f"
+      },
+      {
+        "field": "properties.everyday_parkland_pct",
+        "type": "quantitative",
+        "title": "Parkland (%)",
+        "format": ",.1f"
+      }
+    ]
+  }
+}

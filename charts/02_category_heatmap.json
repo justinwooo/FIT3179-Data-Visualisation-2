@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 420,
+  "data": {
+    "url": "data/processed/category_land_shares.csv"
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "category",
+      "type": "nominal",
+      "axis": {
+        "title": null,
+        "labelAngle": -25
+      }
+    },
+    "y": {
+      "field": "lga_name",
+      "type": "nominal",
+      "sort": "ascending",
+      "axis": {
+        "title": null,
+        "labelLimit": 160
+      }
+    },
+    "color": {
+      "field": "land_share_pct",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "yellowgreenblue",
+        "domain": [
+          0,
+          12
+        ],
+        "clamp": true
+      },
+      "legend": {
+        "title": "Municipality land (%)",
+        "gradientLength": 210
+      }
+    },
+    "tooltip": [
+      {
+        "field": "lga_name",
+        "title": "Municipality"
+      },
+      {
+        "field": "category",
+        "title": "Category"
+      },
+      {
+        "field": "land_share_pct",
+        "type": "quantitative",
+        "title": "Share of municipality (%)",
+        "format": ".2f"
+      },
+      {
+        "field": "area_ha",
+        "type": "quantitative",
+        "title": "Source category area (ha)",
+        "format": ",.1f"
+      }
+    ]
+  },
+  "description": "Each cell is the category area as a percentage of municipality land area. Colors saturate at 12%, while tooltips show the true value."
+}

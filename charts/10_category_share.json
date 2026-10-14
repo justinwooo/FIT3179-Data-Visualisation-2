@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 400,
+  "data": {
+    "url": "data/processed/category_shares.csv"
+  },
+  "mark": {
+    "type": "bar"
+  },
+  "encoding": {
+    "y": {
+      "field": "lga_name",
+      "type": "nominal",
+      "sort": {
+        "field": "total_ha",
+        "op": "max",
+        "order": "descending"
+      },
+      "title": null
+    },
+    "x": {
+      "field": "share_pct",
+      "type": "quantitative",
+      "stack": "zero",
+      "axis": {
+        "title": "Share of category area (%)"
+      },
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      }
+    },
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "title": "Green-space category",
+      "scale": {
+        "range": [
+          "#2d6a4f",
+          "#74a77e",
+          "#a3b18a",
+          "#dbb780"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "lga_name",
+        "type": "nominal",
+        "title": "LGA"
+      },
+      {
+        "field": "category",
+        "type": "nominal",
+        "title": "Category"
+      },
+      {
+        "field": "share_pct",
+        "type": "quantitative",
+        "title": "Share (%)",
+        "format": ",.1f"
+      }
+    ]
+  }
+}

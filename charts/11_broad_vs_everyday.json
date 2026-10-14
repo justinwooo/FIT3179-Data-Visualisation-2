@@ -1,0 +1,111 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 460,
+  "data": {
+    "url": "data/processed/parkland_comparison_long.csv"
+  },
+  "encoding": {
+    "y": {
+      "field": "lga_name",
+      "type": "nominal",
+      "sort": {
+        "field": "sort_value",
+        "order": "descending"
+      },
+      "title": null
+    },
+    "x": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Share of municipality land (%)"
+    },
+    "detail": {
+      "field": "lga_name"
+    },
+    "order": {
+      "field": "metric",
+      "type": "nominal",
+      "sort": [
+        "Everyday parkland",
+        "Broad green space"
+      ]
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#bac8bd",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "detail": {
+          "field": "lga_name",
+          "type": "nominal"
+        },
+        "order": {
+          "field": "metric",
+          "type": "nominal",
+          "sort": [
+            "Everyday parkland",
+            "Broad green space"
+          ]
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 85
+      },
+      "encoding": {
+        "color": {
+          "field": "metric",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Broad green space",
+              "Everyday parkland"
+            ],
+            "range": [
+              "#91b7a1",
+              "#26583e"
+            ]
+          },
+          "title": null
+        },
+        "tooltip": [
+          {
+            "field": "lga_name",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {
+            "field": "metric",
+            "type": "nominal",
+            "title": "Metric"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Land share (%)",
+            "format": ",.1f"
+          }
+        ]
+      }
+    }
+  ]
+}

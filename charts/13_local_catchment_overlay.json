@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 420,
+  "layer": [
+    {
+      "data": {
+        "url": "data/processed/local_catchments.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e9bf72",
+        "opacity": 0.22,
+        "stroke": "#d3943e",
+        "strokeWidth": 0.4
+      }
+    },
+    {
+      "data": {
+        "url": "data/processed/local_open_space.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#397f5b",
+        "stroke": "#315a43",
+        "strokeWidth": 0.35
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.PARK_NAME",
+            "type": "nominal",
+            "title": "Park"
+          },
+          {
+            "field": "properties.OS_CATEGOR",
+            "type": "nominal",
+            "title": "Type"
+          }
+        ]
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 370,
+  "data": {
+    "url": "data/processed/melbourne_lga_summary_final.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#b7bbb4"
+      },
+      "encoding": {
+        "x": {
+          "aggregate": "mean",
+          "field": "everyday_parkland_pct",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#b7bbb4"
+      },
+      "encoding": {
+        "y": {
+          "aggregate": "mean",
+          "field": "walkable_land_pct",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 110,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "everyday_parkland_pct",
+          "type": "quantitative",
+          "title": "Everyday parkland (% of land)"
+        },
+        "y": {
+          "field": "walkable_land_pct",
+          "type": "quantitative",
+          "title": "400m catchment land coverage (%)"
+        },
+        "color": {
+          "value": "#347452"
+        },
+        "tooltip": [
+          {
+            "field": "lga_name",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {
+            "field": "everyday_parkland_pct",
+            "type": "quantitative",
+            "title": "Parkland (%)",
+            "format": ",.1f"
+          },
+          {
+            "field": "walkable_land_pct",
+            "type": "quantitative",
+            "title": "Catchment (%)",
+            "format": ",.1f"
+          }
+        ]
+      }
+    }
+  ]
+}

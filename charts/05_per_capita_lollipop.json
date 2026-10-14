@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Fifteen LGAs with the highest everyday parkland area per 1,000 residents.",
+  "data": {
+    "url": "data/processed/melbourne_lga_summary_final.csv"
+  },
+  "width": "container",
+  "height": {
+    "step": 29
+  },
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "park_rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "everyday_ha_per_1000",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.park_rank <= 15"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "color": "#347452",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "everyday_ha_per_1000",
+      "type": "quantitative",
+      "title": "Everyday parkland (ha per 1,000 residents)",
+      "scale": {
+        "zero": true
+      }
+    },
+    "y": {
+      "field": "lga_name",
+      "type": "nominal",
+      "sort": {
+        "field": "everyday_ha_per_1000",
+        "order": "descending"
+      },
+      "title": null
+    },
+    "tooltip": [
+      {
+        "field": "lga_name",
+        "type": "nominal",
+        "title": "Municipality"
+      },
+      {
+        "field": "everyday_ha_per_1000",
+        "type": "quantitative",
+        "title": "Hectares per 1,000 residents",
+        "format": ".2f"
+      }
+    ]
+  }
+}

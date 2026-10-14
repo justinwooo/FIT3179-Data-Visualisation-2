@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#36463e",
+      "titleColor": "#36463e",
+      "gridColor": "#e8ede7"
+    }
+  },
+  "height": 405,
+  "data": {
+    "url": "data/processed/melbourne_lga_boundaries_final.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "projection": {
+    "type": "mercator"
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#fcfaf5",
+    "strokeWidth": 0.8
+  },
+  "encoding": {
+    "color": {
+      "field": "properties.everyday_parkland_pct",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "greens",
+        "domainMin": 0
+      },
+      "title": "Everyday parkland (% of municipal land)",
+      "legend": {
+        "orient": "bottom"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.lga_name",
+        "type": "nominal",
+        "title": "Municipality"
+      },
+      {
+        "field": "properties.everyday_parkland_pct",
+        "type": "quantitative",
+        "title": "Everyday parkland (% of municipal land)",
+        "format": ",.1f"
+      },
+      {
+        "field": "properties.population_2021",
+        "type": "quantitative",
+        "title": "Residents",
+        "format": ",.0f"
+      }
+    ]
+  }
+}
