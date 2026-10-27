@@ -1,0 +1,322 @@
+[
+  {
+    "label": "All Melbourne",
+    "value": "ALL",
+    "bounds": [
+      144.15,
+      -38.65,
+      146.35,
+      -37.3
+    ]
+  },
+  {
+    "label": "Banyule",
+    "value": "BANYULE",
+    "bounds": [
+      145.027834,
+      -37.785076,
+      145.143709,
+      -37.682611
+    ]
+  },
+  {
+    "label": "Bayside (Vic.)",
+    "value": "BAYSIDE",
+    "bounds": [
+      144.983388,
+      -37.996434,
+      145.055273,
+      -37.88326
+    ]
+  },
+  {
+    "label": "Boroondara",
+    "value": "BOROONDARA",
+    "bounds": [
+      144.999264,
+      -37.875928,
+      145.106726,
+      -37.776848
+    ]
+  },
+  {
+    "label": "Brimbank",
+    "value": "BRIMBANK",
+    "bounds": [
+      144.744419,
+      -37.822818,
+      144.888466,
+      -37.662897
+    ]
+  },
+  {
+    "label": "Cardinia",
+    "value": "CARDINIA",
+    "bounds": [
+      145.364017,
+      -38.332444,
+      145.765142,
+      -37.857687
+    ]
+  },
+  {
+    "label": "Casey",
+    "value": "CASEY",
+    "bounds": [
+      145.214935,
+      -38.24848,
+      145.430664,
+      -37.941877
+    ]
+  },
+  {
+    "label": "Darebin",
+    "value": "DAREBIN",
+    "bounds": [
+      144.970346,
+      -37.785618,
+      145.075404,
+      -37.690986
+    ]
+  },
+  {
+    "label": "Frankston",
+    "value": "FRANKSTON",
+    "bounds": [
+      145.097911,
+      -38.200639,
+      145.239589,
+      -38.067382
+    ]
+  },
+  {
+    "label": "Glen Eira",
+    "value": "GLEN EIRA",
+    "bounds": [
+      144.996751,
+      -37.938739,
+      145.085243,
+      -37.860212
+    ]
+  },
+  {
+    "label": "Greater Dandenong",
+    "value": "GREATER DANDENONG",
+    "bounds": [
+      145.129604,
+      -38.077664,
+      145.251859,
+      -37.924548
+    ]
+  },
+  {
+    "label": "Hobsons Bay",
+    "value": "HOBSONS BAY",
+    "bounds": [
+      144.751438,
+      -37.900028,
+      144.91553,
+      -37.81382
+    ]
+  },
+  {
+    "label": "Hume",
+    "value": "HUME",
+    "bounds": [
+      144.632415,
+      -37.712406,
+      144.977819,
+      -37.481898
+    ]
+  },
+  {
+    "label": "Kingston (Vic.)",
+    "value": "KINGSTON",
+    "bounds": [
+      145.034379,
+      -38.084987,
+      145.15626,
+      -37.923985
+    ]
+  },
+  {
+    "label": "Knox",
+    "value": "KNOX",
+    "bounds": [
+      145.190858,
+      -37.964855,
+      145.347625,
+      -37.83302
+    ]
+  },
+  {
+    "label": "Manningham",
+    "value": "MANNINGHAM",
+    "bounds": [
+      145.067118,
+      -37.811753,
+      145.293938,
+      -37.70243
+    ]
+  },
+  {
+    "label": "Maribyrnong",
+    "value": "MARIBYRNONG",
+    "bounds": [
+      144.83923,
+      -37.826987,
+      144.916507,
+      -37.755814
+    ]
+  },
+  {
+    "label": "Maroondah",
+    "value": "MAROONDAH",
+    "bounds": [
+      145.213334,
+      -37.843906,
+      145.318733,
+      -37.761831
+    ]
+  },
+  {
+    "label": "Melbourne",
+    "value": "MELBOURNE",
+    "bounds": [
+      144.897099,
+      -37.850654,
+      144.991357,
+      -37.775435
+    ]
+  },
+  {
+    "label": "Melton",
+    "value": "MELTON",
+    "bounds": [
+      144.477684,
+      -37.81045,
+      144.768157,
+      -37.552404
+    ]
+  },
+  {
+    "label": "Monash",
+    "value": "MONASH",
+    "bounds": [
+      145.074173,
+      -37.940135,
+      145.220136,
+      -37.853336
+    ]
+  },
+  {
+    "label": "Moonee Valley",
+    "value": "MOONEE VALLEY",
+    "bounds": [
+      144.846141,
+      -37.789642,
+      144.940368,
+      -37.709184
+    ]
+  },
+  {
+    "label": "Moreland",
+    "value": "MORELAND",
+    "bounds": [
+      144.886233,
+      -37.780195,
+      144.988673,
+      -37.690927
+    ]
+  },
+  {
+    "label": "Mornington Peninsula",
+    "value": "MORNINGTON PENINSULA",
+    "bounds": [
+      144.651418,
+      -38.502975,
+      145.261737,
+      -38.162391
+    ]
+  },
+  {
+    "label": "Nillumbik",
+    "value": "NILLUMBIK",
+    "bounds": [
+      145.067696,
+      -37.741728,
+      145.366418,
+      -37.487726
+    ]
+  },
+  {
+    "label": "Port Phillip",
+    "value": "PORT PHILLIP",
+    "bounds": [
+      144.912474,
+      -37.891723,
+      145.010528,
+      -37.82572
+    ]
+  },
+  {
+    "label": "Stonnington",
+    "value": "STONNINGTON",
+    "bounds": [
+      144.983328,
+      -37.892963,
+      145.092207,
+      -37.829609
+    ]
+  },
+  {
+    "label": "Whitehorse",
+    "value": "WHITEHORSE",
+    "bounds": [
+      145.095117,
+      -37.865193,
+      145.213536,
+      -37.792146
+    ]
+  },
+  {
+    "label": "Whittlesea",
+    "value": "WHITTLESEA",
+    "bounds": [
+      144.946466,
+      -37.699969,
+      145.241042,
+      -37.401737
+    ]
+  },
+  {
+    "label": "Wyndham",
+    "value": "WYNDHAM",
+    "bounds": [
+      144.444067,
+      -38.004567,
+      144.82742,
+      -37.781
+    ]
+  },
+  {
+    "label": "Yarra",
+    "value": "YARRA",
+    "bounds": [
+      144.961479,
+      -37.834506,
+      145.045288,
+      -37.775295
+    ]
+  },
+  {
+    "label": "Yarra Ranges",
+    "value": "YARRA RANGES",
+    "bounds": [
+      145.281671,
+      -37.975015,
+      146.192508,
+      -37.525077
+    ]
+  }
+]

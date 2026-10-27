@@ -1,87 +1,129 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
   "background": "transparent",
+  "width": "container",
   "config": {
     "view": {
       "stroke": null
     },
     "font": "Source Sans 3",
     "axis": {
-      "labelColor": "#36463e",
-      "titleColor": "#36463e",
-      "gridColor": "#e8ede7"
+      "labelColor": "#394a42",
+      "titleColor": "#394a42",
+      "grid": false,
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "legend": {
+      "labelColor": "#394a42",
+      "titleColor": "#394a42"
     }
   },
-  "height": 405,
+  "height": 295,
   "data": {
-    "url": "data/processed/lga_bivariate.geojson",
-    "format": {
-      "type": "json",
-      "property": "features"
-    }
+    "url": "data/processed/parkland_density_dotstrip.csv"
   },
-  "projection": {
-    "type": "mercator"
-  },
-  "mark": {
-    "type": "geoshape",
-    "stroke": "white",
-    "strokeWidth": 0.8
-  },
-  "encoding": {
-    "color": {
-      "field": "properties.bivar_label",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Low density / low parkland",
-          "Low density / medium parkland",
-          "Low density / high parkland",
-          "Medium density / low parkland",
-          "Medium density / medium parkland",
-          "Medium density / high parkland",
-          "High density / low parkland",
-          "High density / medium parkland",
-          "High density / high parkland"
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          3,
+          4
         ],
-        "range": [
-          "#e8e8e8",
-          "#b5c0da",
-          "#6c83b5",
-          "#b8d6be",
-          "#93b7b6",
-          "#5e8da1",
-          "#73a77b",
-          "#588e80",
-          "#2e646c"
-        ]
+        "color": "#b8c7bb"
       },
-      "title": "Density / everyday parkland",
-      "legend": {
-        "orient": "bottom",
-        "columns": 3,
-        "labelLimit": 170
+      "encoding": {
+        "x": {
+          "aggregate": "median",
+          "field": "everyday_ha_per_1000",
+          "type": "quantitative"
+        }
       }
     },
-    "tooltip": [
-      {
-        "field": "properties.lga_name",
-        "type": "nominal",
-        "title": "LGA"
+    {
+      "mark": {
+        "type": "circle",
+        "size": 135,
+        "opacity": 0.87,
+        "stroke": "white",
+        "strokeWidth": 0.7
       },
-      {
-        "field": "properties.population_density_km2",
-        "type": "quantitative",
-        "title": "Residents/km\u00b2",
-        "format": ",.1f"
-      },
-      {
-        "field": "properties.everyday_parkland_pct",
-        "type": "quantitative",
-        "title": "Parkland (%)",
-        "format": ",.1f"
+      "encoding": {
+        "x": {
+          "field": "everyday_ha_per_1000",
+          "type": "quantitative",
+          "scale": {
+            "zero": true
+          },
+          "axis": {
+            "title": "Everyday parkland (ha per 1,000 residents)",
+            "grid": true,
+            "gridColor": "#edf0ea"
+          }
+        },
+        "y": {
+          "field": "y_position",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -0.45,
+              2.45
+            ]
+          },
+          "axis": {
+            "title": null,
+            "values": [
+              0,
+              1,
+              2
+            ],
+            "labelExpr": "datum.value === 0 ? 'Low density' : datum.value === 1 ? 'Medium density' : 'High density'",
+            "grid": false
+          }
+        },
+        "color": {
+          "field": "density_group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Low density",
+              "Medium density",
+              "High density"
+            ],
+            "range": [
+              "#8abf83",
+              "#479b88",
+              "#2d5f65"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "lga_name",
+            "type": "nominal",
+            "title": "Municipality"
+          },
+          {
+            "field": "density_group",
+            "type": "nominal",
+            "title": "Density group"
+          },
+          {
+            "field": "population_density_km2",
+            "type": "quantitative",
+            "title": "Residents/km²",
+            "format": ",.0f"
+          },
+          {
+            "field": "everyday_ha_per_1000",
+            "type": "quantitative",
+            "title": "Parkland ha/1,000",
+            "format": ".2f"
+          }
+        ]
       }
-    ]
-  }
+    }
+  ]
 }

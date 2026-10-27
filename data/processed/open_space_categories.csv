@@ -1,0 +1,128 @@
+lga_key,category,area_ha,parcel_records
+BANYULE,Natural and semi-natural open space,512.8501,258
+BANYULE,Parks and gardens,127.3061,189
+BANYULE,Recreation corridor,3.0441,65
+BANYULE,Sportsfields and organised recreation,244.0614,106
+BAYSIDE,Natural and semi-natural open space,159.6368,39
+BAYSIDE,Parks and gardens,52.3249,49
+BAYSIDE,Recreation corridor,0.1211,2
+BAYSIDE,Sportsfields and organised recreation,109.0673,34
+BOROONDARA,Natural and semi-natural open space,263.9732,204
+BOROONDARA,Parks and gardens,171.8324,290
+BOROONDARA,Recreation corridor,0.4598,6
+BOROONDARA,Sportsfields and organised recreation,174.8075,68
+BRIMBANK,Natural and semi-natural open space,883.1476,324
+BRIMBANK,Parks and gardens,386.4102,297
+BRIMBANK,Recreation corridor,38.6179,287
+BRIMBANK,Sportsfields and organised recreation,179.7571,51
+CARDINIA,Natural and semi-natural open space,5724.1155,608
+CARDINIA,Parks and gardens,231.4148,188
+CARDINIA,Recreation corridor,170.3145,160
+CARDINIA,Sportsfields and organised recreation,310.0753,110
+CASEY,Natural and semi-natural open space,1860.221,389
+CASEY,Parks and gardens,577.82,562
+CASEY,Recreation corridor,60.5581,712
+CASEY,Sportsfields and organised recreation,467.871,96
+DAREBIN,Natural and semi-natural open space,147.7416,230
+DAREBIN,Parks and gardens,198.8063,137
+DAREBIN,Recreation corridor,8.7895,63
+DAREBIN,Sportsfields and organised recreation,197.3563,64
+FRANKSTON,Natural and semi-natural open space,460.3904,461
+FRANKSTON,Parks and gardens,154.0263,303
+FRANKSTON,Recreation corridor,66.1514,283
+FRANKSTON,Sportsfields and organised recreation,292.4299,80
+GLEN EIRA,Parks and gardens,43.7252,76
+GLEN EIRA,Recreation corridor,0.3279,8
+GLEN EIRA,Sportsfields and organised recreation,122.0016,68
+GREATER DANDENONG,Natural and semi-natural open space,595.0433,297
+GREATER DANDENONG,Parks and gardens,142.9931,206
+GREATER DANDENONG,Recreation corridor,39.869,77
+GREATER DANDENONG,Sportsfields and organised recreation,212.859,44
+HOBSONS BAY,Natural and semi-natural open space,994.7831,123
+HOBSONS BAY,Parks and gardens,204.4412,167
+HOBSONS BAY,Recreation corridor,7.8713,51
+HOBSONS BAY,Sportsfields and organised recreation,205.6333,47
+HUME,Natural and semi-natural open space,2171.9434,387
+HUME,Parks and gardens,286.4397,356
+HUME,Recreation corridor,30.6612,476
+HUME,Sportsfields and organised recreation,282.5253,95
+KINGSTON,Natural and semi-natural open space,855.9877,128
+KINGSTON,Parks and gardens,179.9919,384
+KINGSTON,Recreation corridor,10.1186,93
+KINGSTON,Sportsfields and organised recreation,223.4021,81
+KNOX,Natural and semi-natural open space,1392.196,266
+KNOX,Parks and gardens,106.1918,247
+KNOX,Recreation corridor,53.9283,232
+KNOX,Sportsfields and organised recreation,267.6379,67
+MANNINGHAM,Natural and semi-natural open space,1000.1577,265
+MANNINGHAM,Parks and gardens,230.065,278
+MANNINGHAM,Recreation corridor,5.3502,48
+MANNINGHAM,Sportsfields and organised recreation,179.5159,83
+MARIBYRNONG,Natural and semi-natural open space,150.31,77
+MARIBYRNONG,Parks and gardens,97.8801,161
+MARIBYRNONG,Recreation corridor,5.9235,24
+MARIBYRNONG,Sportsfields and organised recreation,94.5427,42
+MAROONDAH,Natural and semi-natural open space,196.0337,274
+MAROONDAH,Parks and gardens,108.2115,184
+MAROONDAH,Recreation corridor,6.9969,125
+MAROONDAH,Sportsfields and organised recreation,303.3873,57
+MELBOURNE,Natural and semi-natural open space,251.30780000000001,98
+MELBOURNE,Parks and gardens,419.3996,299
+MELBOURNE,Recreation corridor,2.0063,33
+MELBOURNE,Sportsfields and organised recreation,97.0315,23
+MELTON,Natural and semi-natural open space,1154.0357,327
+MELTON,Parks and gardens,174.3634,273
+MELTON,Recreation corridor,33.6158,360
+MELTON,Sportsfields and organised recreation,257.06419999999997,36
+MITCHELL,Natural and semi-natural open space,22.034,8
+MITCHELL,Parks and gardens,22.7429,51
+MITCHELL,Recreation corridor,2.2521,14
+MITCHELL,Sportsfields and organised recreation,18.832399999999996,7
+MONASH,Natural and semi-natural open space,324.344,84
+MONASH,Parks and gardens,154.7049,312
+MONASH,Recreation corridor,4.9507,70
+MONASH,Sportsfields and organised recreation,229.1684,68
+MOONEE VALLEY,Natural and semi-natural open space,224.3825,215
+MOONEE VALLEY,Parks and gardens,117.7405,176
+MOONEE VALLEY,Recreation corridor,6.5466999999999995,49
+MOONEE VALLEY,Sportsfields and organised recreation,174.1062,83
+MORELAND,Natural and semi-natural open space,213.0839,348
+MORELAND,Parks and gardens,139.9599,341
+MORELAND,Recreation corridor,21.4877,35
+MORELAND,Sportsfields and organised recreation,143.4192,64
+MORNINGTON PENINSULA,Natural and semi-natural open space,1965.4273,880
+MORNINGTON PENINSULA,Parks and gardens,252.9394,500
+MORNINGTON PENINSULA,Recreation corridor,67.7788,197
+MORNINGTON PENINSULA,Sportsfields and organised recreation,298.71,107
+NILLUMBIK,Natural and semi-natural open space,1520.5867,454
+NILLUMBIK,Parks and gardens,187.137,238
+NILLUMBIK,Recreation corridor,34.425,77
+NILLUMBIK,Sportsfields and organised recreation,87.2788,57
+PORT PHILLIP,Natural and semi-natural open space,150.20080000000002,48
+PORT PHILLIP,Parks and gardens,90.6707,157
+PORT PHILLIP,Recreation corridor,0.17009999999999997,3
+PORT PHILLIP,Sportsfields and organised recreation,162.4219,34
+STONNINGTON,Natural and semi-natural open space,26.741899999999998,55
+STONNINGTON,Parks and gardens,62.863,128
+STONNINGTON,Recreation corridor,3.3051,12
+STONNINGTON,Sportsfields and organised recreation,58.5134,19
+WHITEHORSE,Natural and semi-natural open space,301.9067,256
+WHITEHORSE,Parks and gardens,132.3077,366
+WHITEHORSE,Recreation corridor,12.049900000000001,95
+WHITEHORSE,Sportsfields and organised recreation,158.06810000000002,83
+WHITTLESEA,Natural and semi-natural open space,3324.1032999999998,458
+WHITTLESEA,Parks and gardens,449.5655,475
+WHITTLESEA,Recreation corridor,66.7725,227
+WHITTLESEA,Sportsfields and organised recreation,216.264,77
+WYNDHAM,Natural and semi-natural open space,1961.1433,448
+WYNDHAM,Parks and gardens,237.5856,331
+WYNDHAM,Recreation corridor,101.14189999999999,197
+WYNDHAM,Sportsfields and organised recreation,326.42900000000003,50
+YARRA,Natural and semi-natural open space,109.3472,66
+YARRA,Parks and gardens,91.0398,166
+YARRA,Recreation corridor,0.0556,2
+YARRA,Sportsfields and organised recreation,99.2733,26
+YARRA RANGES,Natural and semi-natural open space,74586.0297,1020
+YARRA RANGES,Parks and gardens,669.5733,322
+YARRA RANGES,Recreation corridor,267.1989,168
+YARRA RANGES,Sportsfields and organised recreation,495.1904,161

@@ -1,64 +1,224 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
   "background": "transparent",
+  "width": "container",
+  "height": 340,
   "config": {
     "view": {
       "stroke": null
     },
     "font": "Source Sans 3",
     "axis": {
-      "labelColor": "#36463e",
-      "titleColor": "#36463e",
-      "gridColor": "#e8ede7"
+      "labelColor": "#394a42",
+      "titleColor": "#394a42",
+      "grid": false,
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "legend": {
+      "labelColor": "#394a42",
+      "titleColor": "#394a42"
     }
   },
-  "height": 350,
-  "data": {
-    "url": "data/processed/park_parcels_sample.csv"
-  },
-  "mark": {
-    "type": "boxplot",
-    "extent": 1.5,
-    "size": 36
-  },
-  "encoding": {
-    "x": {
-      "field": "category",
-      "type": "nominal",
-      "axis": {
-        "title": null,
-        "labelAngle": -20
-      }
-    },
-    "y": {
-      "field": "ha",
-      "type": "quantitative",
-      "scale": {
-        "type": "log"
+  "layer": [
+    {
+      "data": {
+        "url": "data/processed/park_parcels_four_types.csv"
       },
-      "title": "Individual record area (ha), log scale"
-    },
-    "color": {
-      "field": "category",
-      "type": "nominal",
-      "legend": null,
-      "scale": {
-        "scheme": "tableau20"
-      }
-    },
-    "tooltip": [
-      {
-        "field": "category",
-        "type": "nominal",
-        "title": "Category"
+      "transform": [
+        {
+          "filter": "isValid(datum.ha) && datum.ha >= 0.01"
+        }
+      ],
+      "mark": {
+        "type": "boxplot",
+        "extent": 1.5,
+        "size": 38,
+        "outliers": false,
+        "clip": true
       },
-      {
-        "field": "ha",
-        "type": "quantitative",
-        "title": "Area (ha)",
-        "format": ",.1f"
+      "encoding": {
+        "x": {
+          "field": "category",
+          "type": "nominal",
+          "sort": [
+            "Parks and gardens",
+            "Natural and semi-natural open space",
+            "Recreation corridor",
+            "Sportsfields and organised recreation"
+          ],
+          "axis": {
+            "title": null,
+            "labelAngle": -15,
+            "labelLimit": 205
+          }
+        },
+        "y": {
+          "field": "ha",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "domain": [
+              0.01,
+              1000
+            ],
+            "clamp": true
+          },
+          "axis": {
+            "title": "Parcel area (ha, log scale)",
+            "grid": false,
+            "tickCount": 5,
+            "format": "~g",
+            "values": [
+              0.01,
+              0.1,
+              1,
+              10,
+              100,
+              1000
+            ]
+          }
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Parks and gardens",
+              "Natural and semi-natural open space",
+              "Recreation corridor",
+              "Sportsfields and organised recreation"
+            ],
+            "range": [
+              "#2b855b",
+              "#8abf83",
+              "#d3a653",
+              "#4b96b6"
+            ]
+          }
+        }
       }
-    ]
-  }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "category": "Parks and gardens",
+            "q3": 0.65175,
+            "label_y": 3.3,
+            "label": "Median: 0.24 ha"
+          },
+          {
+            "category": "Recreation corridor",
+            "q3": 0.0998,
+            "label_y": 0.75,
+            "label": "Median: 0.044 ha"
+          },
+          {
+            "category": "Sportsfields and organised recreation",
+            "q3": 4.031325,
+            "label_y": 27,
+            "label": "Median: 1.55 ha"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#252525",
+        "strokeWidth": 1.1
+      },
+      "encoding": {
+        "x": {
+          "field": "category",
+          "type": "nominal",
+          "sort": [
+            "Parks and gardens",
+            "Natural and semi-natural open space",
+            "Recreation corridor",
+            "Sportsfields and organised recreation"
+          ]
+        },
+        "y": {
+          "field": "q3",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "domain": [
+              0.01,
+              1000
+            ],
+            "clamp": true
+          }
+        },
+        "y2": {
+          "field": "label_y"
+        }
+      }
+    },
+    {
+
+      "data": {
+        "values": [
+          {
+            "category": "Parks and gardens",
+            "label_y": 4.5,
+            "label": "Small spaces dominate:\nHalf of parcels are below 0.24 ha"
+          },
+          {
+            "category": "Recreation corridor",
+            "label_y": 1.05,
+            "label": "Smallest typical parcels:\nMedian of just 0.044 ha"
+          },
+          {
+            "category": "Sportsfields and organised recreation",
+            "label_y": 36,
+            "label": "Largest typical parcels:\n6.5× the median size of parks and gardens"
+          }
+        ]
+      }
+      ,
+
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#000000",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.5,
+        "lineBreak": "\n",
+        "lineHeight": 16,
+        "align": "center"
+      }
+      ,
+      "encoding": {
+        "x": {
+          "field": "category",
+          "type": "nominal",
+          "sort": [
+            "Parks and gardens",
+            "Natural and semi-natural open space",
+            "Recreation corridor",
+            "Sportsfields and organised recreation"
+          ]
+        },
+        "y": {
+          "field": "label_y",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "domain": [
+              0.01,
+              1000
+            ],
+            "clamp": true
+          }
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
 }

@@ -13,7 +13,7 @@
       "gridColor": "#e8ede7"
     }
   },
-  "height": 370,
+  "height": 390,
   "data": {
     "url": "data/processed/melbourne_lga_summary_final.csv"
   },
@@ -56,7 +56,7 @@
       "mark": {
         "type": "circle",
         "size": 110,
-        "opacity": 0.8
+        "opacity": 0.78
       },
       "encoding": {
         "x": {
@@ -70,7 +70,7 @@
           "title": "400m catchment land coverage (%)"
         },
         "color": {
-          "value": "#347452"
+          "value": "#31744e"
         },
         "tooltip": [
           {
@@ -91,6 +91,128 @@
             "format": ",.1f"
           }
         ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.lga_name === 'Whitehorse' || datum.lga_name === 'Yarra Ranges'"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 155,
+        "color": "#1d4536",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "everyday_parkland_pct",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "walkable_land_pct",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "lga_name",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {
+            "field": "everyday_parkland_pct",
+            "type": "quantitative",
+            "title": "Parkland (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "walkable_land_pct",
+            "type": "quantitative",
+            "title": "400m coverage (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.lga_name === \"Whitehorse\""
+        },
+        {
+          "calculate": "datum.lga_name + '\\n' + format(datum.everyday_parkland_pct, '.1f') + '% parkland · ' + format(datum.walkable_land_pct, '.1f') + '% coverage'",
+          "as": "annotation"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 11,
+        "dy": 18,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#000000",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.5,
+        "lineBreak": "\n",
+        "lineHeight": 15
+      },
+      "encoding": {
+        "x": {
+          "field": "everyday_parkland_pct",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "walkable_land_pct",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "annotation",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.lga_name === \"Yarra Ranges\""
+        },
+        {
+          "calculate": "datum.lga_name + '\\n' + format(datum.everyday_parkland_pct, '.1f') + '% parkland · ' + format(datum.walkable_land_pct, '.1f') + '% coverage'",
+          "as": "annotation"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 12,
+        "dy": -20,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#000000",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.5,
+        "lineBreak": "\n",
+        "lineHeight": 15
+      },
+      "encoding": {
+        "x": {
+          "field": "everyday_parkland_pct",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "walkable_land_pct",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "annotation",
+          "type": "nominal"
+        }
       }
     }
   ]

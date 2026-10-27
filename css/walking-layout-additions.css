@@ -1,0 +1,15 @@
+/* Walking accessibility section: Charts 7 and 8 as equal-width cards. */
+#walking .chartgrid { align-items: stretch; }
+#walking .chartcard.walking-pair {
+  grid-column: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+#walking .chartcard.walking-pair .chart { min-height: 0; width: 100%; }
+#walking .chartcard.walking-pair .vega-embed { width: 100%; max-width: 100%; }
+#walking .chartcard.walking-pair .chartnote { margin-top: auto; }
+@media (max-width: 1000px) {
+  #walking .chartgrid { grid-template-columns: 1fr; }
+  #walking .chartcard.walking-pair { grid-column: 1 / -1; }
+}

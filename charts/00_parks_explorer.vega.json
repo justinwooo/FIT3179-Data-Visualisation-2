@@ -1,0 +1,323 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Interactive public recreational green space polygon explorer using VPA data. Vega (allowed by FIT3179).",
+  "width": 1000,
+  "height": 610,
+  "padding": {
+    "top": 10,
+    "bottom": 52,
+    "left": 0,
+    "right": 0
+  },
+  "autosize": "none",
+  "background": "#ffffff",
+  "signals": [
+    {
+      "name": "chosenCategory",
+      "value": "All categories"
+    },
+    {
+      "name": "chosenLga",
+      "value": "ALL"
+    },
+    {
+      "name": "centerLon",
+      "value": 145.25
+    },
+    {
+      "name": "centerLat",
+      "value": -37.95
+    },
+    {
+      "name": "mapScale",
+      "value": 19000,
+      "on": [
+        {
+          "events": {
+            "type": "wheel",
+            "consume": true
+          },
+          "update": "clamp(mapScale * pow(1.0015, -event.deltaY), 1000, 900000)"
+        }
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "name": "mapProjection",
+      "type": "mercator",
+      "scale": {
+        "signal": "mapScale"
+      },
+      "center": [
+        {
+          "signal": "centerLon"
+        },
+        {
+          "signal": "centerLat"
+        }
+      ],
+      "translate": [
+        {
+          "signal": "width/2"
+        },
+        {
+          "signal": "height/2"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "parks",
+      "url": "data/processed/parks_explorer.geojson",
+      "format": {
+        "type": "json",
+        "property": "features"
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "(chosenCategory === 'All categories' || datum.properties.category === chosenCategory) && (chosenLga === 'ALL' || datum.properties.lga_key === chosenLga)"
+        }
+      ]
+    },
+    {
+      "name": "lgas",
+      "url": "data/processed/melbourne_lga_boundaries_final.geojson",
+      "format": {
+        "type": "json",
+        "property": "features"
+      }
+    },
+    {
+      "name": "roads",
+      "url": "data/processed/melbourne_major_roads.geojson",
+      "format": {
+        "type": "json",
+        "property": "features"
+      }
+    },
+    {
+      "name": "labels",
+      "url": "data/processed/parks_explorer_labels.json",
+      "format": {
+        "type": "json"
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "chosenLga === 'ALL' ? (datum.metro_label && mapScale < 43000) : (datum.lga_key === chosenLga || (mapScale > 65000 && datum.metro_label))"
+        },
+        {
+          "type": "geopoint",
+          "projection": "mapProjection",
+          "fields": [
+            "lon",
+            "lat"
+          ],
+          "as": [
+            "x",
+            "y"
+          ]
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "shape",
+      "from": {
+        "data": "lgas"
+      },
+      "transform": [
+        {
+          "type": "geoshape",
+          "projection": "mapProjection"
+        }
+      ],
+      "encode": {
+        "update": {
+          "fill": {
+            "value": "#f6f5f0"
+          },
+          "stroke": {
+            "value": "#49685a"
+          },
+          "strokeWidth": {
+            "value": 0.75
+          },
+          "strokeOpacity": {
+            "value": 0.58
+          },
+          "fillOpacity": {
+            "value": 1
+          }
+        }
+      },
+      "interactive": true,
+      "name": "lga-click-regions"
+    },
+    {
+      "type": "shape",
+      "from": {
+        "data": "parks"
+      },
+      "transform": [
+        {
+          "type": "geoshape",
+          "projection": "mapProjection"
+        }
+      ],
+      "encode": {
+        "update": {
+          "fill": {
+            "scale": "categoryColor",
+            "field": "properties.category"
+          },
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 0.18
+          },
+          "fillOpacity": {
+            "value": 0.94
+          },
+          "tooltip": {
+            "signal": "{'Open space': datum.properties.name, 'Category': datum.properties.category, 'Municipality': datum.properties.lga, 'Parcel area (ha)': datum.properties.area_ha}"
+          }
+        },
+        "hover": {
+          "stroke": {
+            "value": "#183927"
+          },
+          "strokeWidth": {
+            "value": 1.1
+          },
+          "fillOpacity": {
+            "value": 1
+          }
+        }
+      },
+      "name": "park-features"
+    },
+    {
+      "type": "shape",
+      "from": {
+        "data": "roads"
+      },
+      "interactive": false,
+      "transform": [
+        {
+          "type": "geoshape",
+          "projection": "mapProjection"
+        }
+      ],
+      "encode": {
+        "update": {
+          "fill": {
+            "value": "transparent"
+          },
+          "stroke": {
+            "signal": "datum.properties.road_class === 'Motorway / trunk' ? '#bd8979' : '#b8b6ad'"
+          },
+          "strokeWidth": {
+            "signal": "datum.properties.road_class === 'Motorway / trunk' ? 1.2 : 0.65"
+          },
+          "strokeOpacity": {
+            "value": 0.68
+          }
+        }
+      }
+    },
+    {
+      "name": "lga-labels",
+      "type": "text",
+      "from": {
+        "data": "labels"
+      },
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          },
+          "text": {
+            "field": "name"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "signal": "chosenLga === \"ALL\" ? 12 : 13"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#263B34"
+          },
+          "stroke": {
+            "value": "#FFFFFF"
+          },
+          "strokeWidth": {
+            "value": 0.65
+          },
+          "strokeOpacity": {
+            "value": 0.6
+          },
+          "paintOrder": {
+            "value": "stroke"
+          }
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "name": "categoryColor",
+      "type": "ordinal",
+      "domain": [
+        "Parks and gardens",
+        "Natural and semi-natural open space",
+        "Recreation corridors",
+        "Sportsfields and organised recreation"
+      ],
+      "range": [
+        "#2b855b",
+        "#8abf83",
+        "#d3a653",
+        "#4b96b6"
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "fill": "categoryColor",
+      "title": "Green-space category",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "columns": 2,
+      "symbolType": "square",
+      "symbolSize": 105,
+      "labelFont": "Arial",
+      "labelFontSize": 12,
+      "titleFont": "Arial",
+      "titleFontSize": 12,
+      "labelColor": "#304b3e",
+      "titleColor": "#304b3e",
+      "offset": 12,
+      "padding": 8
+    }
+  ]
+}

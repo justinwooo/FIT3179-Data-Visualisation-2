@@ -13,7 +13,7 @@
       "gridColor": "#e8ede7"
     }
   },
-  "height": 420,
+  "height": 400,
   "data": {
     "url": "data/processed/category_land_shares.csv"
   },
@@ -28,7 +28,9 @@
       "type": "nominal",
       "axis": {
         "title": null,
-        "labelAngle": -25
+        "labelAngle": -50,
+        "labelLimit": 135,
+        "labelFontSize": 12
       }
     },
     "y": {
@@ -37,7 +39,8 @@
       "sort": "ascending",
       "axis": {
         "title": null,
-        "labelLimit": 160
+        "labelLimit": 130,
+        "labelFontSize": 11
       }
     },
     "color": {
@@ -52,8 +55,12 @@
         "clamp": true
       },
       "legend": {
-        "title": "Municipality land (%)",
-        "gradientLength": 210
+        "title": "Land share (%)",
+        "orient": "bottom",
+        "gradientLength": 155,
+        "gradientThickness": 10,
+        "labelFontSize": 10,
+        "titleFontSize": 10
       }
     },
     "tooltip": [

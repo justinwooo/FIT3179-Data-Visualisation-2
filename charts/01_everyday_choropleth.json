@@ -1,6 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
+  "height": 500,
   "background": "transparent",
   "config": {
     "view": {
@@ -13,53 +14,192 @@
       "gridColor": "#e8ede7"
     }
   },
-  "height": 405,
-  "data": {
-    "url": "data/processed/melbourne_lga_boundaries_final.geojson",
-    "format": {
-      "type": "json",
-      "property": "features"
-    }
-  },
   "projection": {
     "type": "mercator"
   },
-  "mark": {
-    "type": "geoshape",
-    "stroke": "#fcfaf5",
-    "strokeWidth": 0.8
-  },
-  "encoding": {
-    "color": {
-      "field": "properties.everyday_parkland_pct",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "greens",
-        "domainMin": 0
+  "layer": [
+    {
+      "data": {
+        "url": "data/processed/melbourne_lga_boundaries_final.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
       },
-      "title": "Everyday parkland (% of municipal land)",
-      "legend": {
-        "orient": "bottom"
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fcfaf5",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "color": {
+          "field": "properties.everyday_parkland_pct",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "greens",
+            "domainMin": 0
+          },
+          "title": "Everyday parkland (% of municipal land)",
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "title": "Everyday parkland (% of LGA land)",
+            "gradientLength": 170,
+            "gradientThickness": 10,
+            "labelFontSize": 10,
+            "titleFontSize": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.lga_name",
+            "type": "nominal",
+            "title": "Municipality"
+          },
+          {
+            "field": "properties.everyday_parkland_pct",
+            "type": "quantitative",
+            "title": "Everyday parkland (% of municipal land)",
+            "format": ",.1f"
+          },
+          {
+            "field": "properties.population_2021",
+            "type": "quantitative",
+            "title": "Residents",
+            "format": ",.0f"
+          }
+        ]
       }
     },
-    "tooltip": [
-      {
-        "field": "properties.lga_name",
-        "type": "nominal",
-        "title": "Municipality"
+    {
+      "data": {
+        "values": [
+          {
+            "lon1": 144.9631,
+            "lat1": -37.8136,
+            "lon2": 145.215,
+            "lat2": -37.73
+          },
+          {
+            "lon1": 144.94,
+            "lat1": -37.84,
+            "lon2": 145.19,
+            "lat2": -37.93
+          },
+          {
+            "lon1": 145.42,
+            "lat1": -38.02,
+            "lon2": 145.67,
+            "lat2": -38.20
+          }
+        ]
       },
-      {
-        "field": "properties.everyday_parkland_pct",
-        "type": "quantitative",
-        "title": "Everyday parkland (% of municipal land)",
-        "format": ",.1f"
+      "mark": {
+        "type": "rule",
+        "color": "#384841",
+        "strokeWidth": 1.4
       },
-      {
-        "field": "properties.population_2021",
-        "type": "quantitative",
-        "title": "Residents",
-        "format": ",.0f"
+      "encoding": {
+        "longitude": {
+          "field": "lon1",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat1",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
       }
-    ]
-  }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 144.9631,
+            "lat": -37.8136
+          },
+          {
+            "lon": 144.94,
+            "lat": -37.84
+          },
+          {
+            "lon": 145.42,
+            "lat": -38.02
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "size": 70,
+        "color": "#243b33",
+        "stroke": "white",
+        "strokeWidth": 1.6
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "Melbourne\nHighest everyday parkland share\n13.8% of LGA area",
+            "lon": 145.215,
+            "lat": -37.60,
+            "align": "left"
+          },
+          {
+            "label": "Port Phillip\nSecond highest\n12.2% of LGA area",
+            "lon": 145.19,
+            "lat": -37.97,
+            "align": "left"
+          },
+          {
+            "label": "Cardinia\nLowest everyday parkland share\n0.4% of LGA area",
+            "lon": 145.8,
+            "lat": -38.20,
+            "align": "left"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#000000",
+        "stroke": "#000000",
+        "strokeWidth": 0.5,
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        },
+        "align": {
+          "field": "align",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
 }

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Melbourne's public green spaces — interactive explorer</title>
+<link rel="stylesheet" href="css/parks-explorer.css">
+<script src="https://cdn.jsdelivr.net/npm/vega@5/build/vega.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-tooltip@0.35/build/vega-tooltip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6/build/vega-embed.min.js"></script>
+</head>
+<body>
+<main class="explorer">
+<header class="explorer__intro">
+  <span class="eyebrow">01 / EXPLORE THE GREEN NETWORK</span>
+  <h1>Where are Melbourne's public green spaces?</h1>
+  <p>From neighbourhood gardens to expansive natural reserves, public open spaces take different forms across metropolitan Melbourne. Explore four types of publicly accessible recreational land and zoom in to discover individual spaces.</p>
+</header>
+<section class="map-panel" aria-label="Interactive green space map">
+  <div class="toolbar">
+    <label>Category <select id="category"><option>All categories</option><option>Parks and gardens</option><option>Natural and semi-natural open space</option><option>Recreation corridors</option><option>Sportsfields and organised recreation</option></select></label>
+    <label>Municipality <select id="municipality"><option value="ALL">All Melbourne</option></select></label>
+    <div class="zoom-controls"><button id="zoomIn" type="button" aria-label="Zoom in">+</button><button id="zoomOut" type="button" aria-label="Zoom out">−</button><button id="reset" type="button">Reset</button></div>
+  </div>
+  <p id="status" role="status">Loading map…</p>
+  <div id="parkMap"></div>
+
+  <div class="park-category-legend">
+    <span><i style="background:#2b855b"></i>Parks and gardens</span>
+    <span><i style="background:#8abf83"></i>Natural and semi-natural open space</span>
+    <span><i style="background:#d3a653"></i>Recreation corridors</span>
+    <span><i style="background:#4b96b6"></i>Sportsfields and organised recreation</span>
+  </div>
+
+  <p class="hint">Use the category or municipality dropdowns, or click a municipality to zoom in. Scroll or use +/- to zoom; hover over a park to see its details. The map shows only motorways, trunk and primary roads, sourced from OpenStreetMap.</p>
+</section>
+<footer>Source: Victorian Planning Authority open-space inventory; ABS 2021 LGA boundaries. Existing, open, public open-space parcels in four selected categories. Parcels smaller than 1 ha are excluded from this overview. Mapped geometry is clipped to municipality boundaries. Data reflects source inventory dates, not necessarily current site access. Road data: © OpenStreetMap contributors (openstreetmap.org/copyright).</footer>
+</main>
+<script src="js/parks-explorer.js"></script>
+</body>
+</html>
